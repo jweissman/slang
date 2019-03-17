@@ -1,10 +1,19 @@
 Slang {
-  Exp
+  // A Program is the root of our grammar.
+  Program = Stmt+
+
+  Stmt = Assignment
+      | Expr
+      //  | Funcall
+   
+  Assignment = ident "=" Expr
+
+  Expr
     = AddExp
 
-  Funcall = ident "(" Arglist? ")"
+  Funcall = ident Arglist
   
-  Arglist = (Exp ","?)*
+  Arglist = "(" (Expr ",")* Expr? ")"
 
   AddExp
     = AddExp "+" MulExp  -- plus
@@ -21,7 +30,7 @@ Slang {
     | PriExp
 
   PriExp
-    = "(" Exp ")"  -- paren
+    = "(" Expr ")"  -- paren
     | "+" PriExp   -- pos
     | "-" PriExp   -- neg
     | Funcall

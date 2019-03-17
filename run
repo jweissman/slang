@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
 say() {
-  echo
-  echo
+  # echo
+  # echo
   echo "======== $1 ========="
-  echo
+  # echo
 }
 
 note() {
@@ -13,7 +13,7 @@ note() {
 
 test() {
   note testing
-  yarn test
+  yarn test $1
 }
 
 cli() {
@@ -25,6 +25,6 @@ say "slang dev task runner"
 if [ "$1" = "c" ]; then
   cli
 else
-  test
+  test $1 $2
 fi
 
