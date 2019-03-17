@@ -12,5 +12,9 @@ cli() {
     slang
 }
 
-test
-# cli
+if [ $1 = "test" ]; then
+  test
+else
+  cli
+fi
+
