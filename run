@@ -12,7 +12,8 @@ cli() {
     slang
 }
 
-if [ $1 = "test" ]; then
+
+if [ "$1" = "test" ]; then
   test
 else
   cli

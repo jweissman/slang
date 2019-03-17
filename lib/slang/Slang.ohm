@@ -5,7 +5,7 @@ Slang {
 
   Funcall = ident "(" Arglist? ")"
   
-  Arglist = (Exp ",")* Exp
+  Arglist = (Exp ","?)*
 
   AddExp
     = AddExp "+" MulExp  -- plus
