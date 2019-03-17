@@ -1,7 +1,6 @@
 Slang {
   Exp
-    = Funcall
-    | AddExp
+    = AddExp
 
   Funcall = ident "(" Arglist? ")"
   
@@ -25,6 +24,7 @@ Slang {
     = "(" Exp ")"  -- paren
     | "+" PriExp   -- pos
     | "-" PriExp   -- neg
+    | Funcall
     | ident
     | number
 

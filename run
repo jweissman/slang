@@ -1,21 +1,30 @@
 #!/usr/bin/env bash
 
-echo ===== run =====
+say() {
+  echo
+  echo
+  echo "======== $1 ========="
+  echo
+}
+
+note() {
+  echo "-----------> $1"
+}
 
 test() {
-  echo "===== test ===="
+  note testing
   yarn test
 }
 
 cli() {
-    echo "===== cli ====="
+    note "launching cli"
     slang
 }
 
-
-if [ "$1" = "test" ]; then
-  test
-else
+say "slang dev task runner"
+if [ "$1" = "c" ]; then
   cli
+else
+  test
 fi
 
