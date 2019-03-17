@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+echo ===== run =====
+
+test() {
+  echo "===== test ===="
+  yarn test
+}
+
+cli() {
+    echo "===== cli ====="
+    slang
+}
+
+test
+# cli
