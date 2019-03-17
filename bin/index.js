@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 const Slang = require('../lib/slang');
-console.log("Welcome to Slang!");
 const logo = `
 
  ______     __         ______     __   __     ______    
@@ -13,10 +12,12 @@ const logo = `
 
 `;
 console.log(logo);
+console.log("Welcome to (Interactive) Slang!");
 const slang = new Slang();
 
 const repl = require('repl');
 repl.start({
+    prompt: "is> ",
     eval: (input, _ctx, _filename, cb) => {
         const out = slang.interpret(input);
         cb(null, out);

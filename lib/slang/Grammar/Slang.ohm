@@ -3,13 +3,16 @@ Slang {
   Program = Stmt+
 
   Stmt = Assignment
-      | Expr
+    // | Defun
+    | Expr
       //  | Funcall
+  
+  Defun = Arglist "=>" Expr
    
   Assignment = ident "=" Expr
 
   Expr
-    = AddExp
+    = Defun | AddExp
 
   Funcall = ident Arglist
   
@@ -34,6 +37,7 @@ Slang {
     | "+" PriExp   -- pos
     | "-" PriExp   -- neg
     | Funcall
+    // | Defun
     | ident
     | number
 
