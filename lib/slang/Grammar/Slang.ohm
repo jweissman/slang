@@ -14,7 +14,7 @@ Slang {
   Expr
     = Defun | AddExp
 
-  Funcall = ident Arglist
+  Funcall = (Funcall | ident) Arglist
   
   Arglist = "(" (Expr ",")* Expr? ")"
 
