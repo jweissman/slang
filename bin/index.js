@@ -1,7 +1,11 @@
 #!/usr/bin/env node
 
 const Slang = require('../lib/slang');
-const logo = `
+const slang = new Slang();
+
+const args = process.argv.slice(2);
+if (args.length === 0) {
+    const logo = `
 
  ______     __         ______     __   __     ______    
 /\\  ___\\   /\\ \\       /\\  __ \\   /\\ "-.\\ \\   /\\  ___\\   
@@ -11,15 +15,21 @@ const logo = `
                                                         
 
 `;
-console.log(logo);
-console.log("Welcome to (Interactive) Slang!");
-const slang = new Slang();
+    console.log(logo);
+    console.log("Welcome to (Interactive) Slang!");
 
-const repl = require('repl');
-repl.start({
-    prompt: "is> ",
-    eval: (input, _ctx, _filename, cb) => {
-        const out = slang.interpret(input);
-        cb(null, out);
-    }
-})
+    const repl = require('repl');
+    repl.start({
+        prompt: "is> ",
+        eval: (input, _ctx, _filename, cb) => {
+            const out = slang.interpret(input);
+            cb(null, out);
+        }
+    })
+
+} else {
+    const fs = require('fs');
+    const contents = fs.readFileSync(args[0]).toString();
+    const result = slang.interpret(contents);
+    // console.debug(result);
+}
