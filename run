@@ -12,8 +12,14 @@ note() {
 }
 
 test() {
-  note testing
-  yarn test $1
+  if ([ "$1" = "all" ]); then
+    note testing everything
+    yarn test
+    slang hello.sl
+  else
+    note "testing just (jesting) $1"
+    yarn test $1
+  fi
 }
 
 cli() {

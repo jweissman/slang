@@ -1,8 +1,8 @@
 Slang {
   // A Program is the root of our grammar.
-  Program = (Stmt StmtDelimiter)* Stmt
+  Program = Stmt (#br+ Stmt)*
 
-  StmtDelimiter = ";"
+  br = "\n" | ";" | "\r"
 
   Stmt = Assignment
     | Expr
@@ -48,4 +48,7 @@ Slang {
   number  (a number)
     = digit* "." digit+  -- fract
     | digit+             -- whole
+
+  // br = ";"
+    //  | "\n"
 }
