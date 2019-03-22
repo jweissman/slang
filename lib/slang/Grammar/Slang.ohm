@@ -1,18 +1,19 @@
 Slang {
   // A Program is the root of our grammar.
-  Program = Stmt+
+  Program = (Stmt StmtDelimiter)* Stmt
+
+  StmtDelimiter = ";"
 
   Stmt = Assignment
-    // | Defun
     | Expr
-      //  | Funcall
   
   Defun = Arglist "=>" Expr
    
   Assignment = ident "=" Expr
 
   Expr
-    = Defun | AddExp
+    = Defun
+    | AddExp
 
   Funcall = (Funcall | ident) Arglist
   
