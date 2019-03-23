@@ -13,13 +13,14 @@
     "slang": "./bin/index.js"
   },
   "scripts": {
-    "test": "jest"
+    "test": "jest --reporters jest-silent-reporter"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
     "@babel/preset-env": "^7.3.4",
     "babel-jest": "^24.5.0",
     "jest": "^24.5.0",
+    "jest-silent-reporter": "^0.1.2",
     "jest-webpack": "^0.5.1",
     "ohm-loader": "^0.0.4",
     "webpack": "^4.29.6",

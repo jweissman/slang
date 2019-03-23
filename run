@@ -3,21 +3,21 @@
 say() {
   # echo
   # echo
-  echo "======== $1 ========="
+  echo "$1"
   # echo
 }
 
 note() {
-  echo "-----------> $1"
+  echo "--> $1"
 }
 
 test() {
   if ([ "$1" = "all" ]); then
-    note testing everything
-    yarn test
+    note "testing everything"
+    yarn --silent test
     slang hello.sl
   else
-    note "testing just (jesting) $1"
+    # note "testing $1"
     yarn test $1
   fi
 }
@@ -27,7 +27,7 @@ cli() {
     slang
 }
 
-say "slang dev task runner"
+# say "slang dev task runner"
 if [ "$1" = "c" ]; then
   cli
 else
