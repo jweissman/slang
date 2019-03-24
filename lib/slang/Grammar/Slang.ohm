@@ -13,7 +13,10 @@ Slang {
 
   Expr
     = Defun
+    | StrLit
     | AddExp
+
+  StrLit = "'" (~"'" any)+ "'"
 
   Funcall = (Funcall | ident) Arglist
   

@@ -21,3 +21,6 @@ add = (x) => (y) => x + y
 plusz = add(z)
 x = 10
 p(plusz(x))
+
+greeting = 'hello world!'
+p(greeting)

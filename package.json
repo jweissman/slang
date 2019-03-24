@@ -13,7 +13,8 @@
     "slang": "./bin/index.js"
   },
   "scripts": {
-    "test": "jest --reporters jest-silent-reporter"
+    "test": "jest --reporters jest-silent-reporter --",
+    "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --"
   },
   "devDependencies": {
     "@babel/core": "^7.3.4",
