@@ -33,15 +33,28 @@ Slang {
     = "(" Expr ")"  -- paren
     | "+" PriExp   -- pos
     | "-" PriExp   -- neg
-    | Funcall
-    | StrLit
-    | ArrayLiteral
-    | ListIndex
-    | ident
-    | number
+    | PriVal
+    
+  
+  PriVal = Funcall
+         | StrLit
+         | ArrayLiteral
+         | HashLit
+         | ListIndex
+         | DotAccess
+         | ident
+         | number
+         
+  DotAccess 
+    = PriVal "." ident
+
+  HashLit 
+    = "{" ListOf<HashKeyVal, ","> "}"
+
+  HashKeyVal = ident ":" Expr
 
   Funcall
-    = (Funcall | ident) Arglist
+    = (Funcall | ident | ListIndex) Arglist
   
   Arglist
     = "(" ListOf<Expr, ","> ")"
@@ -50,10 +63,10 @@ Slang {
     = "[" ListOf<(Expr | Dots), ","> "]"
 
   Dots
-    = "..." (ident | Funcall)
+    = "..." (Funcall | ListIndex | ident)
   
   ListIndex
-    = (ident | Funcall) "[" Expr "]"
+    = (Funcall | ListIndex | ident) "[" Expr "]"
 
   StrLit
     = "'" (~"'" any)+ "'"

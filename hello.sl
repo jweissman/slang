@@ -22,5 +22,6 @@ plusz = add(z)
 x = 10
 p(plusz(x))
 
-greeting = 'hello world!'
-p(greeting)
+h = {greeting: 'hello world!'}
+p(h.greeting)
+p(h)
