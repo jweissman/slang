@@ -1,26 +1,19 @@
 Slang {
   // A Program is the root of our grammar.
-  Program = Stmt (#br+ Stmt)*
-
-  br = "\n" | ";" | "\r"
+  Program = ListOf<Stmt, #br>
 
   Stmt = Assignment
     | Expr
   
-  Defun = Arglist "=>" Expr
+  Defun
+    = Arglist "=>" Expr
    
-  Assignment = ident "=" Expr
+  Assignment = (ListIndex | ident) "=" Expr
 
   Expr
     = Defun
-    | StrLit
     | AddExp
-
-  StrLit = "'" (~"'" any)+ "'"
-
-  Funcall = (Funcall | ident) Arglist
-  
-  Arglist = "(" (Expr ",")* Expr? ")"
+    
 
   AddExp
     = AddExp "+" MulExp  -- plus
@@ -41,9 +34,29 @@ Slang {
     | "+" PriExp   -- pos
     | "-" PriExp   -- neg
     | Funcall
-    // | Defun
+    | StrLit
+    | ArrayLiteral
+    | ListIndex
     | ident
     | number
+
+  Funcall
+    = (Funcall | ident) Arglist
+  
+  Arglist
+    = "(" ListOf<Expr, ","> ")"
+
+  ArrayLiteral
+    = "[" ListOf<(Expr | Dots), ","> "]"
+
+  Dots
+    = "..." (ident | Funcall)
+  
+  ListIndex
+    = (ident | Funcall) "[" Expr "]"
+
+  StrLit
+    = "'" (~"'" any)+ "'"
 
   ident  (an identifier)
     = letter alnum*
@@ -52,6 +65,8 @@ Slang {
     = digit* "." digit+  -- fract
     | digit+             -- whole
 
-  // br = ";"
-    //  | "\n"
+  br
+    = "\n"
+    | ";"
+    | "\r"
 }

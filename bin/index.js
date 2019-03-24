@@ -23,7 +23,7 @@ if (args.length === 0) {
         prompt: "is> ",
         eval: (input, _ctx, _filename, cb) => {
             const out = slang.interpret(input);
-            cb(null, out);
+            if (out) { cb(null, out) };
         }
     })
 
