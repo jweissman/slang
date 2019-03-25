@@ -49,7 +49,7 @@ Slang {
     = PriVal "." ident
 
   HashLit 
-    = "{" ListOf<HashKeyVal, ","> "}"
+    = "{" ListOf<(HashKeyVal | Dots), ","> "}"
 
   HashKeyVal = ident ":" Expr
 
