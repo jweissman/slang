@@ -13,7 +13,7 @@
     "slang": "./bin/index.js"
   },
   "scripts": {
-    "test": "jest --reporters jest-silent-reporter --",
+    "test": "jest --reporters jest-silent-reporter jest-html-reporter --",
     "test:debug": "node --inspect-brk ./node_modules/jest/bin/jest.js --runInBand --"
   },
   "devDependencies": {
@@ -21,6 +21,7 @@
     "@babel/preset-env": "^7.3.4",
     "babel-jest": "^24.5.0",
     "jest": "^24.5.0",
+    "jest-html-reporter": "^2.5.0",
     "jest-silent-reporter": "^0.1.2",
     "jest-webpack": "^0.5.1",
     "ohm-loader": "^0.0.4",

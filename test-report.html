@@ -1,0 +1,124 @@
+<html><head><meta charset="utf-8"/><title>Test report</title><style type="text/css">html, body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 1rem;
+	margin: 0;
+	padding: 0;
+	color: #333;
+}
+body {
+	padding: 1rem;
+	font-size: 0.85rem;
+}
+header {
+	display: flex;
+	align-items: center;
+}
+#title {
+	margin: 0;
+	flex-grow: 1;
+}
+#logo {
+	height: 4rem;
+}
+#timestamp {
+	font-weight: bold;
+	color: #666;
+	margin-bottom: 0.5rem;
+}
+#summary {
+	color: #999;
+	margin-bottom: 1rem;
+}
+.suite-info {
+	padding: 1rem;
+	background-color: #eee;
+	border-bottom: 2px solid #999;
+	color: #999;
+	display: flex;
+	align-items: center;
+}
+.suite-info .suite-path {
+	font-weight: bold;
+	word-break: break-all;
+	flex-grow: 1;
+}
+.suite-info .suite-time {
+	margin-left: 0.5rem;
+	padding: 0.2rem 0.3rem;
+	font-size: 0.75rem;
+}
+.suite-info .suite-time.warn {
+	background-color: #D8000C;
+	color: #fff;
+}
+.suite-table {
+	width: 100%;
+	font-size: 0.85rem;
+	margin-bottom: 1em;
+}
+.suite-table td {
+	padding: 0.5rem;
+}
+.suite-table tr.passed {
+	background-color: #DFF2BF;
+	color: #4F8A10;
+}
+.suite-table tr.pending {
+	background-color: #FEEFB3;
+	color: #9F6000;
+}
+.suite-table tr.failed {
+	background-color: #FFBABA;
+	color: #D8000C;
+}
+.suite-table td {
+	font-size: 0.85rem;
+	border-bottom: 1px solid #aaa;
+	vertical-align: top;
+}
+.suite-table td.suite {
+	font-weight: bold;
+	width: 20%;
+}
+.suite-table td.test {
+	font-style: italic;
+	width: 60%;
+}
+.suite-table td.test .failureMsg {
+	font-size: 1rem;
+	white-space: pre-wrap;
+	white-space: -moz-pre-wrap;
+	white-space: -pre-wrap;
+	white-space: -o-pre-wrap;
+	word-wrap: break-word;
+}
+.suite-table td.result {
+	width: 20%;
+	text-align: right;
+}
+
+/* CONSOLE LOGS */
+.suite-consolelog {
+	margin-bottom: 2rem;
+	padding: 1rem;
+	background-color: #efefef;
+}
+.suite-consolelog-header {
+	font-weight: bold;
+}
+.suite-consolelog-item {
+	padding: 0.5rem;
+}
+.suite-consolelog-item pre {
+	margin: 0;
+}
+.suite-consolelog-item-origin {
+	color: #777;
+	font-weight: bold;
+}
+.suite-consolelog-item-message {
+	color: #000;
+	font-size: 1rem;
+	padding: 0 0.5rem;
+}
+</style></head><body><div id="jesthtml-content"><header><h1 id="title">Test report</h1></header><div id="metadata-container"><div id="timestamp">Start: 2019-03-30 17:11:50</div><div id="summary">51 tests -- 47 passed / 0 failed / 3 pending</div></div><div class="suite-info"><div class="suite-path">C:\Users\Administrator\workspace\slang\lib\slang\VM.spec.js</div><div class="suite-time">2.328s</div></div><table class="suite-table" cellspacing="0" cellpadding="0"><tr class="passed"><td class="suite">VM</td><td class="test">stores and retrieves values</td><td class="result">passed in 0.021s</td></tr><tr class="passed"><td class="suite">VM</td><td class="test">defines and calls functions</td><td class="result">passed in 0.002s</td></tr><tr class="passed"><td class="suite">VM</td><td class="test">defines a hash</td><td class="result">passed in 0.001s</td></tr></table><div class="suite-info"><div class="suite-path">C:\Users\Administrator\workspace\slang\lib\slang\Grammar\Grammar.spec.js</div><div class="suite-time">2.868s</div></div><table class="suite-table" cellspacing="0" cellpadding="0"><tr class="passed"><td class="suite">Grammar</td><td class="test">fails empty strings</td><td class="result">passed in 0.011s</td></tr><tr class="passed"><td class="suite">Grammar</td><td class="test">multiple statements with delimiter</td><td class="result">passed in 0.028s</td></tr><tr class="passed"><td class="suite">Grammar</td><td class="test">arithmetic</td><td class="result">passed in 0.037s</td></tr><tr class="passed"><td class="suite">Grammar</td><td class="test">function call</td><td class="result">passed in 0.023s</td></tr><tr class="pending"><td class="suite">Grammar</td><td class="test">function call without parens</td><td class="result">pending</td></tr><tr class="passed"><td class="suite">Grammar</td><td class="test">simple assignment</td><td class="result">passed in 0.006s</td></tr><tr class="passed"><td class="suite">Grammar</td><td class="test">defun</td><td class="result">passed in 0.012s</td></tr><tr class="passed"><td class="suite">Grammar</td><td class="test">string literal</td><td class="result">passed in 0.006s</td></tr><tr class="passed"><td class="suite">Grammar</td><td class="test">list</td><td class="result">passed in 0.021s</td></tr><tr class="passed"><td class="suite">Grammar</td><td class="test">hash</td><td class="result">passed in 0.003s</td></tr><tr class="passed"><td class="suite">Grammar</td><td class="test">multiline fn</td><td class="result">passed in 0.003s</td></tr><tr class="passed"><td class="suite">Grammar</td><td class="test">calls a fn inside of an object</td><td class="result">passed in 0.008s</td></tr><tr class="passed"><td class="suite">Grammar</td><td class="test">comments</td><td class="result">passed in 0.002s</td></tr></table><div class="suite-info"><div class="suite-path">C:\Users\Administrator\workspace\slang\lib\slang\Semantics.spec.js</div><div class="suite-time">3.282s</div></div><table class="suite-table" cellspacing="0" cellpadding="0"><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; binary expressions</td><td class="test">adds/subtracts</td><td class="result">passed in 0.019s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; binary expressions</td><td class="test">multiplies/divides</td><td class="result">passed in 0.009s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; binary expressions</td><td class="test">expontentiates</td><td class="result">passed in 0.003s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; binary expressions</td><td class="test">negates</td><td class="result">passed in 0.011s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; parentheses</td><td class="test">parses parenthetical expressions</td><td class="result">passed in 0.006s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; funcalls</td><td class="test">parses function applications</td><td class="result">passed in 0.02s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; values (assignment)</td><td class="test">parses assignments</td><td class="result">passed in 0.011s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; defun</td><td class="test">parses a function definition</td><td class="result">passed in 0.008s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; string literals</td><td class="test">parses a string literal</td><td class="result">passed in 0.002s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; list notation</td><td class="test">parses an array literal</td><td class="result">passed in 0.006s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; list notation</td><td class="test">parses array access notation</td><td class="result">passed in 0.002s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; list notation</td><td class="test">parses ellipsis interpolation</td><td class="result">passed in 0.004s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; hash notation</td><td class="test">parses a hash literal</td><td class="result">passed in 0.003s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; hash notation</td><td class="test">parses dot access notation</td><td class="result">passed in 0.003s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; hash notation</td><td class="test">parses nested dot notation</td><td class="result">passed in 0.002s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; multiline fn</td><td class="test">parses block notation</td><td class="result">passed in 0.004s</td></tr><tr class="passed"><td class="suite">Semantics &gt; parses, yielding an ast &gt; comments</td><td class="test">parses commentary</td><td class="result">passed in 0.001s</td></tr></table><div class="suite-info"><div class="suite-path">C:\Users\Administrator\workspace\slang\lib\slang\Slang.spec.js</div><div class="suite-time">3.503s</div></div><table class="suite-table" cellspacing="0" cellpadding="0"><tr class="passed"><td class="suite">Slang</td><td class="test">calculates arithmetic</td><td class="result">passed in 0.072s</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">parentheses</td><td class="result">passed in 0.024s</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">negative numbers</td><td class="result">passed in 0.004s</td></tr><tr class="todo"><td class="suite">Slang</td><td class="test">floating-point literals</td><td class="result">todo</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">handles built-ins</td><td class="result">passed in 0.051s</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">assignment</td><td class="result">passed in 0.006s</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">defines functions</td><td class="result">passed in 0.016s</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">can define higher-order functions</td><td class="result">passed in 0.025s</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">can perform multiple operations in a single line</td><td class="result">passed in 0.006s</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">strings</td><td class="result">passed in 0.002s</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">lists</td><td class="result">passed in 0.009s</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">interpolates lists</td><td class="result">passed in 0.008s</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">hashes</td><td class="result">passed in 0.007s</td></tr><tr class="pending"><td class="suite">Slang</td><td class="test">hash assignment</td><td class="result">pending</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">defs multiline functions</td><td class="result">passed in 0.015s</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">defs simple pseudo-objects</td><td class="result">passed in 0.017s</td></tr><tr class="passed"><td class="suite">Slang</td><td class="test">ignores comments</td><td class="result">passed in 0.001s</td></tr><tr class="pending"><td class="suite">Slang</td><td class="test">calls functions without parens</td><td class="result">pending</td></tr></table></div></body></html>

@@ -1,8 +1,9 @@
 Slang {
-  // A Program is the root of our grammar.
-  Program = ListOf<Stmt, #br>
+  Program = ListOf<Stmt, #br> #br?
 
-  Stmt = Assignment
+  Stmt 
+    = Comment 
+    | Assignment
     | Expr
   
   Defun
@@ -15,7 +16,6 @@ Slang {
   Expr
     = Defun
     | AddExp
-    
 
   AddExp
     = AddExp "+" MulExp  -- plus
@@ -36,30 +36,39 @@ Slang {
     | "+" PriExp   -- pos
     | "-" PriExp   -- neg
     | PriVal
-    
   
-  PriVal = Funcall
-         | StrLit
+  PriVal = StrLit
          | ArrayLiteral
          | HashLit
          | ListIndex
+         | Funcall
          | DotAccess
+        //  | LambdaFuncall
          | ident
          | number
          
   DotAccess 
-    = PriVal "." ident
+    = (DotAccess | ident) "." ident
 
   HashLit 
     = "{" ListOf<(HashKeyVal | Dots), ","> "}"
 
   HashKeyVal = ident ":" Expr
+ 
+  Callable = Funcall
+           | DotAccess
+           | ident
 
   Funcall
-    = (Funcall | ident | ListIndex) Arglist
+    = Callable Arglist
+    
+  // LambdaFuncall = Callable ArglistOmittingParens
   
   Arglist
     = "(" ListOf<Expr, ","> ")"
+    
+  ArglistOmittingParens
+    = ListOf<AddExp, ",">
 
   ArrayLiteral
     = "[" ListOf<(Expr | Dots), ","> "]"
@@ -68,10 +77,13 @@ Slang {
     = "..." (Funcall | ListIndex | ident)
   
   ListIndex
-    = (Funcall | ListIndex | ident) "[" Expr "]"
+    = (ident) "[" Expr "]"
 
   StrLit
     = "'" #(~"'" any)+ "'"
+
+  Comment
+    = "//" #(~"\n" any)+ "\n"*
 
   ident  (an identifier)
     = letter alnum*
@@ -81,7 +93,7 @@ Slang {
     | digit+             -- whole
 
   br
-    = "\n"
+    = "\r" | "\n"
     | ";"
-    | "\r"
+       
 }

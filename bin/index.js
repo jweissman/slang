@@ -31,5 +31,4 @@ if (args.length === 0) {
     const fs = require('fs');
     const contents = fs.readFileSync(args[0]).toString();
     const result = slang.interpret(contents);
-    // console.debug(result);
 }
