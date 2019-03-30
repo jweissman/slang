@@ -115,13 +115,42 @@ class Attack implements Action {
 attack = Attack.new(actor: This.new, target: That.new)
 ```
 
+#### blocks
+
+so what is the shape of our block notation? do we need a specialized
+multiline lambda syntax... let's think about it
+
+we have `() => ...` style definition, why not `() => { ...; ... }` style?
+
+that would at least let us start testing local variable issues
+quicker and see if we need to do renaming kind of things??
+
+then we can at least now build dirt-simple "objects" with `{ meth: () => { ... } }` and not be so contrained? 
+
+[one further/]a notation we could accept in a hash defn might be
+a little short method defn `{ meth() {...}, methB() {...} }`
+
+[one question here might be: are these expressions also available 'in the free'? can i just say `foo() {}` and now `foo()` is a funcall in that scope? is it an expression?? (probably not for now but..? it seems like we'll need it at least in the definition of the hash key-value tuple)]
+
+#### destructuring
+
+we should be able to use array ellipsis 'inversely' in method definitions to
+do destructuring -- even more interesting would be able to decompose a hash
+along this sort of structure (ie `meth({key}) { p(key) }`)
+
+(just a point to contemplate: this kind of implies you should be able to destructure 'in the free' somehow, what might be a good notation for that?)
+
+#### typing
+
+we can play in dynamicland all day and have this trivial type system that only
+explodes at the last minute, i guess that's fine not to really worry about it --
+but we already do have a type system, i guess the question is whether we should
+try to analyze anything around that -- it seems like we may have to defer the 
+whole notion of type literal definitions (ie `type x = a | b ...` kind of thing)
+but maybe there's something in between?
 
 
-
-
-
-
-### garb, rune, ward
+## garb, rune, ward
 
 garb could be like yarn, project management and dependency resolution (garb new/get/remove/run)
 rune could be stylechecker

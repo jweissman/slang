@@ -6,9 +6,11 @@ Slang {
     | Expr
   
   Defun
-    = Arglist "=>" Expr
+    = Arglist "=>" (Block | Expr)
    
   Assignment = (ListIndex | ident) "=" Expr
+
+  Block = "{" Program "}"
 
   Expr
     = Defun
@@ -69,7 +71,7 @@ Slang {
     = (Funcall | ListIndex | ident) "[" Expr "]"
 
   StrLit
-    = "'" (~"'" any)+ "'"
+    = "'" #(~"'" any)+ "'"
 
   ident  (an identifier)
     = letter alnum*
