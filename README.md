@@ -21,11 +21,13 @@ A tiny toy for teaching/learning about PL implementation and design.
 
 ## Syntax
 
-What do we have so far?
+
+### Arithmetic
 
 We can do simple arithmetic with numbers and assign values to variables.
  
     2*3+4 # => 10
+    pi = 3.1415926 # => pi
 
 Create a simple lambda (the last value is returned implicitly):
 
@@ -34,6 +36,19 @@ Create a simple lambda (the last value is returned implicitly):
 For single-statement expressions the braces may be omitted:
 
     g = (x) => x+x^2+1
+
+Invoke these functions with parens:
+
+  g(3) # => 13
+
+You can also omit parentheses if there are arguments:
+
+  g 4
+
+[Notes: If you emit `g` 'blindly' (without parens or args) it seems likely
+you might be trying to use it in a higher-order fucntion, so Slang won't 
+evaluate it on the spot but rather return the lambda as a value -- in the
+repl this looks like.]
 
 Create a new list:
 
@@ -66,6 +81,9 @@ You can interpolate hashes too:
 ## Roadmap
 
 'straw-person': modules
+
 'clay-person' (0.1?): packages
+
 'iron-person': web stack? 'engine'? (ffi? at least call into js???)
+
 'steel-person': slanghub / running in the browser? standalone node-based interpreter environment? argots?

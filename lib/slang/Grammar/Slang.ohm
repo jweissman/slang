@@ -1,21 +1,23 @@
+
 Slang {
-  Program = ListOf<Stmt, #br> #br?
+  Program = listOf<Stmt, br> br?
 
   Stmt 
     = Comment 
     | Assignment
+    | LambdaFuncall
     | Expr
-  
+    
   Defun
-    = Arglist "=>" (Block | Expr)
-   
+    = (ParamList | ListOf<Param, ",">) "=>" (Block | Expr)
+
   Assignment = (ListIndex | ident) "=" Expr
 
   Block = "{" Program "}"
 
-  Expr
-    = Defun
+  Expr = Defun
     | AddExp
+
 
   AddExp
     = AddExp "+" MulExp  -- plus
@@ -43,10 +45,9 @@ Slang {
          | ListIndex
          | Funcall
          | DotAccess
-        //  | LambdaFuncall
          | ident
          | number
-         
+
   DotAccess 
     = (DotAccess | ident) "." ident
 
@@ -54,28 +55,25 @@ Slang {
     = "{" ListOf<(HashKeyVal | Dots), ","> "}"
 
   HashKeyVal = ident ":" Expr
- 
-  Callable = Funcall
-           | DotAccess
-           | ident
 
-  Funcall
-    = Callable Arglist
-    
-  // LambdaFuncall = Callable ArglistOmittingParens
-  
-  Arglist
-    = "(" ListOf<Expr, ","> ")"
-    
-  ArglistOmittingParens
-    = ListOf<AddExp, ",">
+  Callable = (Funcall | DotAccess | ident)
+
+  Funcall = Callable "(" listOf<Arg, ","> ")"
+  LambdaFuncall = (DotAccess | ident) #" " (~#br nonemptyListOf<Arg, ",">)
+
+  Arg = LambdaFuncall | Expr
+  //ArgList = listOf<Arg, ",">
+
+  Param = ident
+  ParamList
+    = "(" ListOf<Param, ","> ")"
 
   ArrayLiteral
     = "[" ListOf<(Expr | Dots), ","> "]"
 
   Dots
     = "..." (Funcall | ListIndex | ident)
-  
+
   ListIndex
     = (ident) "[" Expr "]"
 
@@ -83,10 +81,11 @@ Slang {
     = "'" #(~"'" any)+ "'"
 
   Comment
-    = "//" #(~"\n" any)+ "\n"*
+    = "//" #(~newline any)+ newline*
+  newline = "\n"
 
   ident  (an identifier)
-    = letter alnum*
+   = letter alnum*
 
   number  (a number)
     = digit* "." digit+  -- fract
@@ -95,5 +94,5 @@ Slang {
   br
     = "\r" | "\n"
     | ";"
-       
+
 }

@@ -22,3 +22,6 @@ inspect(30)
 h={greeting: 'hello world!'}
 p(h.greeting)
 p(h)
+
+// fib!!!
+// fib = (n) => n < 3 ? 1 : fib(n-2) + fib(n-1)
