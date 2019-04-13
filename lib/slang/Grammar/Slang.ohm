@@ -58,8 +58,12 @@ Slang {
          | ListIndex
          | Funcall
          | DotAccess
+         | LenLit
          | ident
          | number
+
+  LenLit
+    = "#" Expr
 
   DotAccess 
     = (DotAccess | ident) "." ident

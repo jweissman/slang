@@ -15,8 +15,8 @@ quadruple = twice(double)
 cube = (x) => thrice(math.times(x))(1)
 inspect = (x) => p(x, double(x), quadruple(x), square(x), cube(x))
 inspect(10)
-inspect(20)
-inspect(30)
+inspect(200)
+inspect(3000)
  
 // hashes
 h={greeting: 'hello world!'}

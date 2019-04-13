@@ -8,11 +8,10 @@ A tiny toy for teaching/learning about PL implementation and design.
  - [x] arithmetic with variables
  - [x] shorthand and multi-line function definitions
  - [x] function application (parens optional)
- - [x] strings
- - [x] lists
+ - [x] strings and lists
  - [x] blocks (multi-line fns)
  - [x] ternary conditionals
- - [ ] hashes
+ - [x] hashes
  - [ ] classes
  - [ ] modules
  - [ ] load/import/require
@@ -53,6 +52,22 @@ trying to use `g` as a function-valued variable, so Slang won't evaluate it
 on the spot, but rather return the lambda as a value. In the repl this
 return value looks like "`lambda`" when inspected.
 
+### Strings
+
+Create a string literal:
+
+```
+    greeting = 'hello world'
+    p(greeting) # => 'hello world' prints!
+```
+
+Get the length of a string:
+
+```
+  #'hi' #=> 3
+  #greeting #=> 11
+```
+
 ### Lists
 
 Create a new list:
@@ -68,6 +83,15 @@ Interpolate lists:
 ```
    b = [...a,4,5] # => [4,2,3,4,5]
 ```
+
+Get the length of a list:
+
+```
+  #[1,2,3] #=> 3
+  #b #=> 5
+```
+
+
 
 ### Hashes
 
@@ -112,6 +136,7 @@ A few methods are provided as built-ins:
 - modules
 - multi-line comments
 - path literals
+- template strings
 
 ### clay-person (0.1?)
 
@@ -124,6 +149,7 @@ A few methods are provided as built-ins:
 - 'engine'
 - ffi (at least call into js)
 - uri literals
+- tree literals
 - language extension points
 
 ### steel-person (1.0)
