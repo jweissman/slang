@@ -31,3 +31,11 @@ p(fib 3)
 p(fib 4)
 p(fib 5)
 p(fib 6)
+
+// need deeper conditional first-order logic ops? ||/&&?
+p(fib 10)
+
+// index spaces
+//iota=(n)=>n==1?[1]:[...iota(n-1),n]
+p(iota 250)
+

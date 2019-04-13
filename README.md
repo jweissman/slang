@@ -5,15 +5,14 @@
 A tiny toy for teaching/learning about PL implementation and design.
 
 ## Features
- - [x] arithmetic
- - [x] values
- - [x] function application
- - [x] function definition
+ - [x] arithmetic with variables
+ - [x] shorthand and multi-line function definitions
+ - [x] function application (parens optional)
  - [x] strings
  - [x] lists
  - [x] blocks (multi-line fns)
- - [~] hashes
  - [x] ternary conditionals
+ - [ ] hashes
  - [ ] classes
  - [ ] modules
  - [ ] load/import/require
@@ -28,7 +27,8 @@ A tiny toy for teaching/learning about PL implementation and design.
 We can do simple arithmetic with numbers and assign values to variables.
  
     2*3+4 # => 10
-    pi = 3.1415926 # => pi
+    a=10+3^2 # => 19
+    a+1 # => 20
 
 ### Functions
 
@@ -42,15 +42,15 @@ For single-statement expressions the braces may be omitted:
 
 Invoke these functions with parens:
 
-  g(3) # => 13
+    g(3) # => 13
 
 You can also omit parentheses if there are arguments:
 
-  g 4
+    g 4 # => 21
 
-If you emit `g` 'blindly' without parens or args, you might be
-trying to use it as a function-valued variable, so Slang won't evaluate it
-on the spot but rather return the lambda as a value. In the repl this
+Just `g` is the lambda itself; that is, without parens or args, you might be
+trying to use `g` as a function-valued variable, so Slang won't evaluate it
+on the spot, but rather return the lambda as a value. In the repl this
 return value looks like "`lambda`" when inspected.
 
 ### Lists
@@ -94,13 +94,41 @@ Compare two values:
 Switch based on a value:
 
 ```a>b?'bigger':'smaller' # => smaller``` 
+```fib=(n)=>n>1?fib(n-1)+fib(n-2):1 # => lambda```
+```fib 10 # => 89```
+
+### Builtins
+
+A few methods are provided as built-ins:
+
+  - `p` to print (`p 1, 'hello' # => 1 'hello'`)
+  - `iota` is an index space generator (`iota 3 # => [0,1,2]`). 
+  - `min` and `max` (`max 10, 20 # => 20`)
 
 ## Roadmap
 
-'straw-person': modules
+### straw-person
 
-'clay-person' (0.1?): packages
+- modules
+- multi-line comments
+- path literals
 
-'iron-person': web stack? 'engine'? (ffi? at least call into js???)
+### clay-person (0.1?)
 
-'steel-person': slanghub / running in the browser? standalone node-based interpreter environment? argots?
+- packages
+- graph literals
+
+### iron-person
+
+- web stack
+- 'engine'
+- ffi (at least call into js)
+- uri literals
+- language extension points
+
+### steel-person (1.0)
+
+- slanghub
+- running in the browser
+- standalone node-based interpreter agent/service
+- argots (components, cqrs/microservices, lang-dev, game)

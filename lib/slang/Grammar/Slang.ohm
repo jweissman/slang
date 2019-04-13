@@ -11,7 +11,7 @@ Slang {
   Defun
     = (ParamList | ListOf<Param, ",">) "=>" (Block | Expr)
 
-  Assignment = (ListIndex | ident) "=" Expr
+  Assignment = (ListIndex | DotAccess | ident) "=" Expr
 
   Block = "{" Program "}"
 
