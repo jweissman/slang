@@ -192,3 +192,11 @@ fashion if we permit interleaving destructuring of arrays and hashes
 with ('full') pattern matches we are really looking at 'object composition', 
 hyperobjects 
 
+--
+
+service/agile argot -- assume a given directory is populated with
+a structure and files for a service -- each file can be an action?
+a resource? a service endpoint?
+
+i love the idea of cross-referencing micro-services all being simple
+files? [kind of erlang-y maybe?]

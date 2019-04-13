@@ -16,8 +16,21 @@ Slang {
   Block = "{" Program "}"
 
   Expr = Defun
+    | Ternary
+    | Comparison
     | AddExp
+    
+  Comparison
+    = AddExp ">"  AddExp -- gt
+    | AddExp "<"  AddExp -- lt
+    | AddExp "==" AddExp -- eq
+    | AddExp "<=" AddExp -- lte
+    | AddExp ">=" AddExp -- gte
+    
 
+  Ternary = (~#"?" Condition) "?" Expr ":" Expr
+
+  Condition = Comparison | Expr
 
   AddExp
     = AddExp "+" MulExp  -- plus
@@ -56,13 +69,12 @@ Slang {
 
   HashKeyVal = ident ":" Expr
 
-  Callable = (Funcall | DotAccess | ident)
+  Callable = Funcall | DotAccess | ident
+
+  Arg = LambdaFuncall | Expr
 
   Funcall = Callable "(" listOf<Arg, ","> ")"
   LambdaFuncall = (DotAccess | ident) #" " (~#br nonemptyListOf<Arg, ",">)
-
-  Arg = LambdaFuncall | Expr
-  //ArgList = listOf<Arg, ",">
 
   Param = ident
   ParamList

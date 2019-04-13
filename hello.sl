@@ -25,3 +25,9 @@ p(h)
 
 // fib!!!
 // fib = (n) => n < 3 ? 1 : fib(n-2) + fib(n-1)
+fib=(n)=>n>1?fib(n-1)+fib(n-2):1;
+p(fib 2)
+p(fib 3)
+p(fib 4)
+p(fib 5)
+p(fib 6)

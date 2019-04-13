@@ -11,8 +11,9 @@ A tiny toy for teaching/learning about PL implementation and design.
  - [x] function definition
  - [x] strings
  - [x] lists
- - [x] hashes
  - [x] blocks (multi-line fns)
+ - [~] hashes
+ - [x] ternary conditionals
  - [ ] classes
  - [ ] modules
  - [ ] load/import/require
@@ -28,6 +29,8 @@ We can do simple arithmetic with numbers and assign values to variables.
  
     2*3+4 # => 10
     pi = 3.1415926 # => pi
+
+### Functions
 
 Create a simple lambda (the last value is returned implicitly):
 
@@ -45,10 +48,12 @@ You can also omit parentheses if there are arguments:
 
   g 4
 
-[Notes: If you emit `g` 'blindly' (without parens or args) it seems likely
-you might be trying to use it in a higher-order fucntion, so Slang won't 
-evaluate it on the spot but rather return the lambda as a value -- in the
-repl this looks like.]
+If you emit `g` 'blindly' without parens or args, you might be
+trying to use it as a function-valued variable, so Slang won't evaluate it
+on the spot but rather return the lambda as a value. In the repl this
+return value looks like "`lambda`" when inspected.
+
+### Lists
 
 Create a new list:
 
@@ -64,6 +69,8 @@ Interpolate lists:
    b = [...a,4,5] # => [4,2,3,4,5]
 ```
 
+### Hashes
+
 Create a new hash:
 
 ```
@@ -77,6 +84,16 @@ You can interpolate hashes too:
   h2 = { ...h, person: 'you' }
   h.hello + h.person # => 'hi you'
 ```
+
+### Conditions
+
+Compare two values:
+
+```a=2;b=3;a>b # => false```
+
+Switch based on a value:
+
+```a>b?'bigger':'smaller' # => smaller``` 
 
 ## Roadmap
 
