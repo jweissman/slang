@@ -12,7 +12,7 @@ test() {
   if ([ "$1" = "all" ]); then
     note "testing everything"
     yarn --silent test
-    slang hello.sl
+    slang hello.slang
   else
     # note "testing $1"
     yarn test $1

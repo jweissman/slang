@@ -35,7 +35,35 @@ p(fib 6)
 // need deeper conditional first-order logic ops? ||/&&?
 p(fib 10)
 
-// index spaces
-//iota=(n)=>n==1?[1]:[...iota(n-1),n]
-p(iota 250)
+// maps!!
 
+map=(f,a)=>{
+    res=[];
+    each(a, (e) => { res=[...res,f(e)] });
+    res;
+}
+
+p(map(fib, iota 25))
+
+// guessing game??
+model = {
+    count: 0
+}
+
+engine = {
+    kickstarts: () => {
+        p 'good to go', model.count
+        model.count = model.count + 1
+        p model.count
+    }
+
+}
+
+game = {
+    play: () => {
+        p 'let us go somewhere'
+        engine.kickstarts()
+    }
+}
+
+game.play()

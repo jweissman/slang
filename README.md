@@ -142,6 +142,7 @@ A few methods are provided as built-ins:
 
 - packages
 - graph literals
+- linter
 
 ### iron-person
 
