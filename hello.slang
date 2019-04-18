@@ -33,15 +33,25 @@ p(fib 5)
 p(fib 6)
 
 // need deeper conditional first-order logic ops? ||/&&?
-p(fib 10)
+p(fib 10);
 
 // maps!!
 
+push=(a,e)=>a=[...a,e];
 map=(f,a)=>{
     res=[];
-    each(a, (e) => { res=[...res,f(e)] });
+    each a, (e) => res = push(res, f(e));
     res;
 }
+
+// iterate=(f)=>(x)=>{ |-x; iterate(f,f(x)) }
+// take = (stream, n) => {
+//    res=[]; times n, () => push res, -|stream; res }
+
+//iterate(f,x) {
+//    |-x
+//    iterate(f,f(x))
+//}
 
 p(map(fib, iota 25))
 
@@ -51,7 +61,7 @@ model = {
 }
 
 engine = {
-    kickstarts: () => {
+    kickstart: () => {
         p 'good to go', model.count
         model.count = model.count + 1
         p model.count
@@ -62,7 +72,7 @@ engine = {
 game = {
     play: () => {
         p 'let us go somewhere'
-        engine.kickstarts()
+        engine.kickstart()
     }
 }
 

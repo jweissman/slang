@@ -10,9 +10,11 @@ A tiny toy for teaching/learning about PL implementation and design.
  - [x] function application (parens optional)
  - [x] strings and lists
  - [x] blocks (multi-line fns)
- - [x] ternary conditionals
  - [x] hashes
- - [ ] classes
+ - [x] ternary conditionals with simple comparisons
+ - [ ] boolean logic operators
+ - [ ] classes and 'formal' function notation (`f() { ... }`)
+ - [ ] promise notation (yield/await with turnstile/left and right tacks `|-` and `-|`)
  - [ ] modules
  - [ ] load/import/require
 
@@ -128,6 +130,7 @@ A few methods are provided as built-ins:
   - `p` to print (`p 1, 'hello' # => 1 'hello'`)
   - `iota` is an index space generator (`iota 3 # => [0,1,2]`). 
   - `min` and `max` (`max 10, 20 # => 20`)
+  - `each` iterates a list (`each arr, (elem) => ...`)
 
 ## Roadmap
 
@@ -144,7 +147,7 @@ A few methods are provided as built-ins:
 - graph literals
 - linter
 
-### iron-person
+#this## iron-person
 
 - web stack
 - 'engine'

@@ -1,15 +1,15 @@
 
 Slang {
-  Program = listOf<Stmt, br> br?
+  Program = listOf<(BasicStmt | Comment), br> br?
 
-  Stmt 
-    = Comment 
+  BasicStmt 
+    = 
     | Assignment
     | LambdaFuncall
     | Expr
     
   Defun
-    = (ParamList | ListOf<Param, ",">) "=>" (Block | Expr)
+    = (ParamList | ListOf<Param, ",">) "=>" (Block | BasicStmt)
 
   Assignment = (ListIndex | DotAccess | ident) "=" Expr
 
@@ -59,8 +59,15 @@ Slang {
          | Funcall
          | DotAccess
          | LenLit
+         | LambdaFuncall
+         | Turnstile
          | ident
          | number
+
+  Turnstile
+    = "|-" Expr -- rtack
+    | "-|" Expr -- ltack
+    | "&" Expr -- stream
 
   LenLit
     = "#" Expr
