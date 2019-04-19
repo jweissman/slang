@@ -25,7 +25,7 @@ p(h)
 
 // fib!!!
 // fib = (n) => n < 3 ? 1 : fib(n-2) + fib(n-1)
-fib=(n)=>n>1?fib(n-1)+fib(n-2):1;
+fib=(n)=>{n>1?(fib(n-1)+fib(n-2)):1;}
 p(fib 2)
 p(fib 3)
 p(fib 4)
@@ -37,23 +37,40 @@ p(fib 10);
 
 // maps!!
 
+times = (num, fn) => { t=()=>{ fn(); times(num-1, fn) }; num>0?t():'(times)' }
 push=(a,e)=>a=[...a,e];
-map=(f,a)=>{
-    res=[];
-    each a, (e) => res = push(res, f(e));
-    res;
+times 10, () => p 'hi there'
+
+take = (f, n) => {
+    res=[]
+    times(n, () => res=push(res, -|f))
+    res
 }
 
-// iterate=(f)=>(x)=>{ |-x; iterate(f,f(x)) }
-// take = (stream, n) => {
-//    res=[]; times n, () => push res, -|stream; res }
 
-//iterate(f,x) {
-//    |-x
-//    iterate(f,f(x))
+hi = () => {
+  |- 'hello'
+  |- 'there'
+  |- 'world'
+  |* hi()
+}
+
+//hilots = () => times 50, |-&hi
+p(take &hi, 10)
+
+//
+//iterate=(f)=>(x)=>{ |-x; iterate(f,f(x)) }
+
+//take (iterate(fib)), 10
+
+
+// we need to destructure arrays? [ first, ...rest ] = arr
+
+//map=(f,a)=>{
+//    res=[]
+//    each(a,() => res = push(res, f(e))) //, (e) => res = push(res, f(e));
+//    res;
 //}
-
-p(map(fib, iota 25))
 
 // guessing game??
 model = {

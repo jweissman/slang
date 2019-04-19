@@ -67,6 +67,7 @@ Slang {
   Turnstile
     = "|-" Expr -- rtack
     | "-|" Expr -- ltack
+    | "|*" Expr -- bubble
     | "&" Expr -- stream
 
   LenLit

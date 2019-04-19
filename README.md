@@ -123,6 +123,22 @@ Switch based on a value:
 ```fib=(n)=>n>1?fib(n-1)+fib(n-2):1 # => lambda```
 ```fib 10 # => 89```
 
+### Shallow coroutines
+
+Use the turnstile operators (`-|`, `|-`) and `&` to build and manipulate
+streams. Simple stream composition with `|*` is provided to do
+more advanced control flow.
+
+  `|- [value]`: yield a value
+  `&[fn]`: create a stream
+  `-|[stream]`: extract an element from a stream
+  `|*[fn]`: bubble up yields
+
+`f=() => |- 1` defines a function `f` that yields the value 1.
+`g=&f` defines a stream that produces values.
+`e=-|g` extracts an element `e` from the stream `g`.
+`|*f` bubbles yields from within `f`
+
 ### Builtins
 
 A few methods are provided as built-ins:
@@ -147,7 +163,7 @@ A few methods are provided as built-ins:
 - graph literals
 - linter
 
-#this## iron-person
+### iron-person
 
 - web stack
 - 'engine'
