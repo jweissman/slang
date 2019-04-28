@@ -9,7 +9,7 @@ Slang {
     | Expr
     
   Defun
-    = (ParamList | ListOf<Param, ",">) "=>" (Block | BasicStmt)
+    = ParamList "=>" (Block | BasicStmt)
 
   Assignment = (ListIndex | DotAccess | ident) "=" Expr
 
@@ -68,7 +68,12 @@ Slang {
     = "|-" Expr -- rtack
     | "-|" Expr -- ltack
     | "|*" Expr -- bubble
-    | "&" Expr -- stream
+    | "&"  (Funcall) -- stream
+    // | "*|" Expr -- lbubble
+    // | "=|" Expr -- double_ltack
+    // | "|=" Expr -- double_rtack
+    // | "|*" (Funcall | ArrayLiteral) -- bubble
+    // | "&" (Funcall | ident) -- stream
 
   LenLit
     = "#" Expr
@@ -106,6 +111,12 @@ Slang {
 
   Comment
     = "//" #(~newline any)+ newline*
+  
+  // Load
+    // = "load" ident -- load
+    // | "import" ident "from" ident -- import
+    // | "export" ident -- export
+
   newline = "\n"
 
   ident  (an identifier)

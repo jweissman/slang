@@ -2,7 +2,6 @@
 
 p('hello slang')
 
-
 math = { times: (x) => (y) => x * y }; p(math.times(2)(2))
 
 double=math.times(2)
@@ -56,7 +55,7 @@ hi = () => {
 }
 
 //hilots = () => times 50, |-&hi
-p(take &hi, 10)
+p(take(&hi(), 10))
 
 //
 //iterate=(f)=>(x)=>{ |-x; iterate(f,f(x)) }

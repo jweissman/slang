@@ -1,8 +1,25 @@
 # Slang
 
+
 ## About
 
-A tiny toy for teaching/learning about PL implementation and design.
+Slang is a tiny programming language, written to learn and hopefully to teach others about programming language design and implementation! 
+
+Slang is designed to be user-friendly and concise: to take a small amount of input and do a lot of work. It's not supposed to be concatenative and 'absolutely' minimal, but some elements of those languages (apl, golflangs) are definitely up for consideration in the design space.
+
+## Synopsis
+
+We are close in spirit at this point to scripting languages like ruby, lua, javascript (our host language and interpreter environment).
+
+We are starting to have some elements reminiscent of functional programming languages -- 'lambda-style' evaluation without parens in some cases, with functions as more or less first-class entities in the ecosystem, and some support for functional idioms...
+
+One of our minor syntax innovations is a shorthand notation for shallow coroutines (functional control flow with yield/generator semantics). The syntactical metaphor is a *turnstile* or *tack*. Depending on the orientation of the turnstile (or which way the point of 'tack' is facing) you should envision either:
+
+  - 'pushing' (values) past the turnstile bar (`|-`, pronounced 'right-tack')
+  - or 'pulling' (values) through the turnstile bar (`-|`, pronounced 'left-tack')
+
+You can also imagine another instance in which the turnstile is rotating or spinning
+freely, allowing everything to pass (`|*`, 'bar-star', or maybe 'star-tack'). A companion piece of syntax is ampersand (`&`), which 'ties together' a function that pushes values up with right-tacks (yields) and creates a generator from an invocation of that function.  
 
 ## Features
  - [x] arithmetic with variables
@@ -12,10 +29,9 @@ A tiny toy for teaching/learning about PL implementation and design.
  - [x] blocks (multi-line fns)
  - [x] hashes
  - [x] ternary conditionals with simple comparisons
- - [ ] boolean logic operators
- - [ ] classes and 'formal' function notation (`f() { ... }`)
- - [ ] promise notation (yield/await with turnstile/left and right tacks `|-` and `-|`)
- - [ ] modules
+ - [x] promise notation (yield/await with turnstile/left and right tacks `|-` and `-|`)
+ - [ ] boolean logic operators (`||` and `&&`)
+ - [ ] classes and modules with formal member function notation (`f() { ... }`)
  - [ ] load/import/require
 
     
@@ -115,7 +131,9 @@ You can interpolate hashes too:
 
 Compare two values:
 
-```a=2;b=3;a>b # => false```
+```a=2;b=3;a>b # => False```
+```a=='hello' # => False```
+```a==2 # => True```
 
 Switch based on a value:
 
