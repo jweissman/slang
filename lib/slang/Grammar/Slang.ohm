@@ -101,7 +101,7 @@ Slang {
     = "[" ListOf<(Expr | Dots), ","> "]"
 
   Dots
-    = "..." (Funcall | ListIndex | DotAccess | ident)
+    = "..." (Funcall | ListIndex | DotAccess | PriExp | ident)
 
   ListIndex
     = (ident) "[" Expr "]"

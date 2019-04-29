@@ -34,42 +34,26 @@ p(fib 6)
 // need deeper conditional first-order logic ops? ||/&&?
 p(fib 10);
 
-// maps!!
 
-times = (num, fn) => { t=()=>{ fn(); times(num-1, fn) }; num>0?t():'(times)' }
-push=(a,e)=>a=[...a,e];
-times 10, () => p 'hi there'
-
-take = (f, n) => {
-    res=[]
-    times(n, () => res=push(res, -|f))
-    res
-}
-
-
-hi = () => {
-  |- 'hello'
-  |- 'there'
-  |- 'world'
-  |* hi()
-}
-
-//hilots = () => times 50, |-&hi
-p(take(&hi(), 10))
-
-//
-//iterate=(f)=>(x)=>{ |-x; iterate(f,f(x)) }
-
-//take (iterate(fib)), 10
-
-
-// we need to destructure arrays? [ first, ...rest ] = arr
-
-//map=(f,a)=>{
-//    res=[]
-//    each(a,() => res = push(res, f(e))) //, (e) => res = push(res, f(e));
-//    res;
-//}
+/// times = (num, fn) => { t=()=>{ fn(); times(num-1, fn) }; num>0?t():'(times)' }
+/// push=(a,e)=>a=[...a,e];
+/// times 10, () => p 'hi there'
+/// 
+/// take = (f, n) => {
+///     res=[]
+///     times(n, () => res=push(res, -|f))
+///     res
+/// }
+/// 
+/// 
+/// hi = () => {
+///   |- 'hello'
+///   |- 'there'
+///   |- 'world'
+///   |* hi()
+/// }
+/// 
+/// p(take(&hi(), 10))
 
 // guessing game??
 model = {
@@ -93,3 +77,37 @@ game = {
 }
 
 game.play()
+
+it = (f,x) => {
+  |- x
+  |* it(f, f(x))
+}
+
+g = &it((x) => x+1, 1)
+
+p -| g
+p -| g
+p -| g
+
+double = (x) => x * 2
+doubling = &it(double, 1)
+p -| doubling
+p -| doubling
+p -| doubling
+p -| doubling
+p -| doubling
+
+// something weird with take...
+take = (gen,n) => {
+    p 'take', n, 'times from', gen
+    v = -| gen
+    p 'took', v
+    rest = n>1?take(gen,n-1):[]
+    p 'rest', rest
+    [ v, ...rest ]
+};
+triple = &it((x) => x*3, 1)
+p(take(triple, 3))
+
+
+// maps!!

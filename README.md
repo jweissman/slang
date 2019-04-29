@@ -9,17 +9,23 @@ Slang is designed to be user-friendly and concise: to take a small amount of inp
 
 ## Synopsis
 
-We are close in spirit at this point to scripting languages like ruby, lua, javascript (our host language and interpreter environment).
+Slang is close in spirit at this point to scripting languages like ruby, lua, javascript (our host language and interpreter environment).
 
 We are starting to have some elements reminiscent of functional programming languages -- 'lambda-style' evaluation without parens in some cases, with functions as more or less first-class entities in the ecosystem, and some support for functional idioms...
 
-One of our minor syntax innovations is a shorthand notation for shallow coroutines (functional control flow with yield/generator semantics). The syntactical metaphor is a *turnstile* or *tack*. Depending on the orientation of the turnstile (or which way the point of 'tack' is facing) you should envision either:
+The overall goal for Slang is to be a lightweight interpreted language suitable for adapting and extending to 
+form an environment in which expressing the solution to problems is 'close' to expressing the problem directly.
+This suggests a system of argots or fundamental language extensions which provide additional support for
+different domain data and control structures.
 
-  - 'pushing' (values) past the turnstile bar (`|-`, pronounced 'right-tack')
-  - or 'pulling' (values) through the turnstile bar (`-|`, pronounced 'left-tack')
+### Turnstiles
 
-You can also imagine another instance in which the turnstile is rotating or spinning
-freely, allowing everything to pass (`|*`, 'bar-star', or maybe 'star-tack'). A companion piece of syntax is ampersand (`&`), which 'ties together' a function that pushes values up with right-tacks (yields) and creates a generator from an invocation of that function.  
+One of Slang's minor syntax innovations is a shorthand notation for shallow coroutines (functional control flow with yield/generator semantics). The syntactical metaphor is a *turnstile* or *tack*. Depending on the orientation of the turnstile (or which way the point of 'tack' is facing) you should envision either:
+
+  - 'pushing' (values) past the turnstile bar (`|-`, pronounced 'yield' or 'right-tack')
+  - or 'pulling' (values) through the turnstile bar (`-|`, pronounced 'derive' or 'left-tack')
+
+You can also imagine another instance in which the turnstile is rotating or spinning freely, allowing everything to pass (`|*`, 'bubble', 'bar-star', or maybe 'star-tack'). A companion piece of syntax is ampersand (`&`), which 'ties together' a function that pushes values up with right-tacks (yields) and creates a generator from an invocation of that function.  
 
 ## Features
  - [x] arithmetic with variables
@@ -156,6 +162,21 @@ more advanced control flow.
 `g=&f` defines a stream that produces values.
 `e=-|g` extracts an element `e` from the stream `g`.
 `|*f` bubbles yields from within `f`
+
+Here is a simple iterator written with turnstile operators:
+
+```
+it = (f,x) => {
+  |- x
+  |* it(f, f(x))
+}
+
+g = &it((x) => x+1, 1)
+
+-| g // => 1
+-| g // => 2
+-| g // => 3
+```
 
 ### Builtins
 
