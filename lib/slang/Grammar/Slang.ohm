@@ -72,8 +72,6 @@ Slang {
     // | "*|" Expr -- lbubble
     // | "=|" Expr -- double_ltack
     // | "|=" Expr -- double_rtack
-    // | "|*" (Funcall | ArrayLiteral) -- bubble
-    // | "&" (Funcall | ident) -- stream
 
   LenLit
     = "#" Expr
@@ -95,7 +93,11 @@ Slang {
 
   Param = ident
   ParamList
-    = "(" ListOf<Param, ","> ")"
+    = FormalParamList
+    | InformalParamList
+  
+  FormalParamList = "(" ListOf<Param, ","> ")"
+  InformalParamList = ListOf<Param, ",">
 
   ArrayLiteral
     = "[" ListOf<(Expr | Dots), ","> "]"

@@ -63,18 +63,21 @@ For single-statement expressions the braces may be omitted:
 
     g = (x) => x+x^2+1
 
+You can also omit the parens around the formal parameters in many cases:
+
+    h = x,y => x * y
+
 Invoke these functions with parens:
 
     g(3) # => 13
 
-You can also omit parentheses if there are arguments:
+You can also often omit parentheses as long as there are arguments:
 
     g 4 # => 21
 
-Just `g` is the lambda itself; that is, without parens or args, you might be
-trying to use `g` as a function-valued variable, so Slang won't evaluate it
-on the spot, but rather return the lambda as a value. In the repl this
-return value looks like "`lambda`" when inspected.
+#### Functional Thinking
+
+If there are no arguments, just `g` without parens denotes the lambda itself; that is, without parens or args, you might be trying to use `g` as a function-valued variable, so Slang won't evaluate it on the spot, but rather return the lambda as a value. In the repl this return value looks like the derived function source when inspected.
 
 ### Strings
 
